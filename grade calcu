@@ -1,0 +1,69 @@
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        boolean running = true;
+
+        while (running) {
+            String name, attendance;
+            double firstTerm, midterm, finals, average;
+
+            System.out.print("Enter student name: ");
+            name = input.nextLine();
+
+            System.out.print("Enter firstTerm grade: ");
+            firstTerm = input.nextDouble();
+
+            System.out.print("Enter midterm grade: ");
+            midterm = input.nextDouble();
+
+            System.out.print("Enter finals grade: ");
+            finals = input.nextDouble();
+
+            System.out.print("Meets attendance requirement? (Y/N): ");
+            attendance = input.next();
+
+            if (firstTerm < 0 || firstTerm > 100 ||
+                midterm < 0 || midterm > 100 ||
+                finals < 0 || finals > 100) {
+
+                System.out.println("Invalid grade!");
+
+            } else if (!attendance.equalsIgnoreCase("Y") &&
+                       !attendance.equalsIgnoreCase("N")) {
+
+                System.out.println("Invalid attendance! Please enter Y or N.");
+
+            } else {
+                average = (firstTerm + midterm + finals) / 3;
+
+                System.out.println("Student Name: " + name);
+                System.out.printf("Final Grade: %.2f%n", average);
+
+                if (average >= 75 && attendance.equalsIgnoreCase("Y")) {
+                    System.out.println("Status: PASSED");
+                } else {
+                    System.out.println("Status: FAILED");
+                }
+            }
+
+            System.out.print("Want to perform another check? (Y/N): ");
+            String choice = input.next();
+
+            if (choice.equalsIgnoreCase("N")) {
+                running = false;
+            } else {
+                input.nextLine(); // Clears the leftover newline
+            }
+
+            System.out.println();
+        }
+
+        System.out.println("Exiting Application. Program Ends.");
+
+        input.close();
+    }
+}
