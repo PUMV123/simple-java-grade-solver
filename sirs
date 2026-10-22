@@ -1,0 +1,71 @@
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        String[] elements1 = {"Na", "H", "C", "Fe"};
+        String[] elements2 = {"Cl", "O", "O", "S"};
+
+        String[] compounds = {
+            "Sodium Chloride (NaCl)",
+            "Water (H2O)",
+            "Carbon Dioxide (CO2)",
+            "Iron Sulfide (FeS)"
+        };
+
+        boolean running = true;
+
+        while (running) {
+            System.out.print("Enter the first element: ");
+            String element1 = input.next();
+
+            System.out.print("Enter the second element: ");
+            String element2 = input.next();
+
+            element1 = element1.substring(0, 1).toUpperCase()
+                    + element1.substring(1).toLowerCase();
+
+            element2 = element2.substring(0, 1).toUpperCase()
+                    + element2.substring(1).toLowerCase();
+
+            boolean reactionFound = false;
+            int matchIndex = -1;
+
+            for (int i = 0; i < elements1.length; i++) {
+                if ((element1.equals(elements1[i])
+                        && element2.equals(elements2[i]))
+                    || (element1.equals(elements2[i])
+                        && element2.equals(elements1[i]))) {
+
+                    reactionFound = true;
+                    matchIndex = i;
+                    break;
+                }
+            }
+
+            if (reactionFound) {
+                System.out.println("Resulting Compound: "
+                        + compounds[matchIndex]);
+            } else {
+                System.out.println(
+                    "Result: No Reaction (or combination not in database)"
+                );
+            }
+
+            System.out.print("Want to perform another check? (Y/N): ");
+            String choice = input.next();
+
+            if (choice.equalsIgnoreCase("N")) {
+                running = false;
+            }
+            
+            System.out.println();
+        }
+
+        System.out.println("Exiting Application. Program Ends.");
+
+        input.close();
+    }
+}
