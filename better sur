@@ -1,0 +1,111 @@
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        String[] elements1 = {"Na", "H", "C", "Fe"};
+        String[] elements2 = {"Cl", "O", "O", "S"};
+
+        String[] compounds = {
+            "Sodium Chloride (NaCl)",
+            "Water (H2O)",
+            "Carbon Dioxide (CO2)",
+            "Iron Sulfide (FeS)"
+        };
+
+        boolean running = true;
+
+        while (running) {
+
+            String element1;
+            String element2;
+            boolean valid1;
+            boolean valid2;
+
+            // Check first element immediately
+            do {
+                System.out.print("Enter the first element: ");
+                element1 = input.next();
+
+                element1 = element1.substring(0, 1).toUpperCase()
+                        + element1.substring(1).toLowerCase();
+
+                valid1 = false;
+
+                for (int i = 0; i < elements1.length; i++) {
+                    if (element1.equals(elements1[i]) ||
+                        element1.equals(elements2[i])) {
+                        valid1 = true;
+                        break;
+                    }
+                }
+
+                if (!valid1) {
+                    System.out.println("Invalid Element! Try again.");
+                }
+
+            } while (!valid1);
+
+            System.out.println(element1 + " is a valid element!");
+
+            // Check second element immediately
+            do {
+                System.out.print("Enter the second element: ");
+                element2 = input.next();
+
+                element2 = element2.substring(0, 1).toUpperCase()
+                        + element2.substring(1).toLowerCase();
+
+                valid2 = false;
+
+                for (int i = 0; i < elements1.length; i++) {
+                    if (element2.equals(elements1[i]) ||
+                        element2.equals(elements2[i])) {
+                        valid2 = true;
+                        break;
+                    }
+                }
+
+                if (!valid2) {
+                    System.out.println("Invalid Element! Try again.");
+                }
+
+            } while (!valid2);
+
+            System.out.println(element2 + " is a valid element!");
+
+            // Search for the compound
+            boolean reactionFound = false;
+
+            for (int i = 0; i < elements1.length; i++) {
+                if ((element1.equals(elements1[i]) &&
+                     element2.equals(elements2[i])) ||
+                    (element1.equals(elements2[i]) &&
+                     element2.equals(elements1[i]))) {
+
+                    reactionFound = true;
+                    System.out.println("Resulting Compound: " + compounds[i]);
+                    break;
+                }
+            }
+
+            if (!reactionFound) {
+                System.out.println("No matching compound found.");
+            }
+
+            System.out.print("Want to perform another check? (Y/N): ");
+            String choice = input.next();
+
+            if (choice.equalsIgnoreCase("N")) {
+                running = false;
+            }
+
+            System.out.println();
+        }
+
+        System.out.println("Exiting Application. Program Ends.");
+        input.close();
+    }
+}
