@@ -1,0 +1,138 @@
+
+import java.util.Scanner;
+import java.io.PrintStream;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+        PrintStream output = System.out;
+
+        // Element arrays
+        String[] elements1 = {
+            "Na", "H", "C", "Fe", "K", "Mg", "Ca"
+        };
+
+        String[] elements2 = {
+            "Cl", "O", "O", "S", "Cl", "O", "O"
+        };
+
+        // Compound names
+        String[] compounds = {
+            "Sodium Chloride (NaCl)",
+            "Water (H2O)",
+            "Carbon Dioxide (CO2)",
+            "Iron Sulfide (FeS)",
+            "Potassium Chloride (KCl)",
+            "Magnesium Oxide (MgO)",
+            "Calcium Oxide (CaO)"
+        };
+
+        boolean running = true;
+
+        // Program header
+        output.println("========================================");
+        output.println("       CHEMICAL COMPOUND SYSTEM");
+        output.println("========================================");
+
+        while (running) {
+
+            String element1;
+            String element2;
+            boolean valid1;
+            boolean valid2;
+
+            // Enter first element and validate
+            do {
+                output.print("\nEnter first element: ");
+                element1 = input.next();
+
+                element1 = element1.substring(0, 1).toUpperCase()
+                        + element1.substring(1).toLowerCase();
+
+                valid1 = false;
+
+                for (int i = 0; i < elements1.length; i++) {
+                    if (element1.equals(elements1[i]) ||
+                        element1.equals(elements2[i])) {
+                        valid1 = true;
+                        break;
+                    }
+                }
+
+                if (!valid1) {
+                    output.println("Invalid Element! Please try again.");
+                }
+
+            } while (!valid1);
+
+            output.println(element1 + " is a valid element!");
+
+            // Enter second element and validate
+            do {
+                output.print("Enter second element: ");
+                element2 = input.next();
+
+                element2 = element2.substring(0, 1).toUpperCase()
+                        + element2.substring(1).toLowerCase();
+
+                valid2 = false;
+
+                for (int i = 0; i < elements1.length; i++) {
+                    if (element2.equals(elements1[i]) ||
+                        element2.equals(elements2[i])) {
+                        valid2 = true;
+                        break;
+                    }
+                }
+
+                if (!valid2) {
+                    output.println("Invalid Element! Please try again.");
+                }
+
+            } while (!valid2);
+
+            output.println(element2 + " is a valid element!");
+
+            // Find matching compound
+            boolean reactionFound = false;
+
+            for (int i = 0; i < elements1.length; i++) {
+
+                if ((element1.equals(elements1[i]) &&
+                     element2.equals(elements2[i])) ||
+                    (element1.equals(elements2[i]) &&
+                     element2.equals(elements1[i]))) {
+
+                    output.println("----------------------------------------");
+                    output.println("Resulting Compound: " + compounds[i]);
+
+                    reactionFound = true;
+                    break;
+                }
+            }
+
+            // Display no reaction if no match exists
+            if (!reactionFound) {
+                output.println("----------------------------------------");
+                output.println("Result: NO REACTION");
+            }
+
+            output.println("----------------------------------------");
+
+            // Ask to repeat
+            output.print("Check another combination? (Y/N): ");
+            String choice = input.next();
+
+            if (choice.equalsIgnoreCase("N")) {
+                running = false;
+            }
+        }
+
+        output.println("\n========================================");
+        output.println("       CHEMICAL SYSTEM CLOSED");
+        output.println("========================================");
+
+        input.close();
+    }
+}
