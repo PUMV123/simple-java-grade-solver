@@ -5,14 +5,40 @@ public class Main {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 
-        String[] elements1 = {"Na", "H", "C", "Fe"};
-        String[] elements2 = {"Cl", "O", "O", "S"};
+        String[] elements1 = {"Na", "H", "C", "Fe", "Mg", "Ca", "K", "Li", "H",  "C", "N", "S", "Si", "Na", "K", "Li","Mg", "Ca", "Ba", "Al", "Zn", "Cu", "Ag", "Pb", "Sn", "P", "C", "N", "H", "Fe"};
+        String[] elements2 = {"Cl", "O", "O", "S", "O", "O", "Br", "F", "Cl", "H", "H", "O", "O", "F", "I", "Br", "Cl", "S", "O", "O", "O", "O", "Cl", "O", "Cl", "O", "S", "O", "S", "O"};
 
         String[] compounds = {
-            "Sodium Chloride (NaCl)",
+           "Sodium Chloride (NaCl)",
             "Water (H2O)",
             "Carbon Dioxide (CO2)",
-            "Iron Sulfide (FeS)"
+            "Iron(II) Sulfide (FeS)",
+            "Magnesium Oxide (MgO)",
+            "Calcium Oxide (CaO)",
+            "Potassium Bromide (KBr)",
+            "Lithium Fluoride (LiF)",
+            "Hydrogen Chloride (HCl)",
+            "Methane (CH4)",
+            "Ammonia (NH3)",
+            "Sulfur Dioxide (SO2)",
+            "Silicon Dioxide (SiO2)",
+            "Sodium Fluoride (NaF)",
+            "Potassium Iodide (KI)",
+            "Lithium Bromide (LiBr)",
+            "Magnesium Chloride (MgCl2)",
+            "Calcium Sulfide (CaS)",
+            "Barium Oxide (BaO)",
+            "Aluminum Oxide (Al2O3)",
+            "Zinc Oxide (ZnO)",
+            "Copper(II) Oxide (CuO)",
+            "Silver Chloride (AgCl)",
+            "Lead(II) Oxide (PbO)",
+            "Tin(II) Chloride (SnCl2)",
+            "Tetraphosphorus Decooxide (P4O10)",
+            "Carbon Disulfide (CS2)",
+            "Nitrogen Dioxide (NO2)",
+            "Hydrogen Sulfide (H2S)",
+            "Iron(III) Oxide (Fe2O3)"
         };
 
         boolean running = true;
