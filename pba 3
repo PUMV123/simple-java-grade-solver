@@ -8,13 +8,38 @@ public class Main {
         Scanner input = new Scanner(System.in);
         PrintStream output = System.out;
 
-        // Element arrays
+        // First element array
         String[] elements1 = {
-            "Na", "H", "C", "Fe", "K", "Mg", "Ca"
+            "Na", "H", "C", "Fe", "Mg", "Ca", "K", "Li",
+            "H", "C", "N", "S", "Si", "Na", "K", "Li",
+            "Mg", "Ca", "Ba", "Al", "Zn", "Cu", "Ag", "Pb",
+            "Sn", "P", "C", "N", "H", "Fe",
+
+            "Na", "Na", "Na", "Na", "Na", "Na",
+            "K", "K", "K", "K", "Li", "Li",
+            "Ca", "Ca", "Ca", "Mg", "Mg",
+            "Al", "Al", "Zn", "Zn", "Cu", "Cu",
+            "Ag", "Ag", "Pb", "Pb", "Sn", "Sn",
+            "P", "Si", "Si", "B", "B", "Be",
+            "Cr", "Mn", "Ni", "Co", "Au", "Hg",
+            "H", "H", "H"
         };
 
+        // Second element array
         String[] elements2 = {
-            "Cl", "O", "O", "S", "Cl", "O", "O"
+            "Cl", "O", "O", "S", "O", "O", "Br", "F",
+            "Cl", "H", "H", "O", "O", "F", "I", "Br",
+            "Cl", "S", "O", "O", "O", "O", "Cl", "O",
+            "Cl", "O", "S", "O", "S", "O",
+
+            "O", "Br", "I", "S", "N", "H",
+            "Cl", "F", "O", "S", "Cl", "O",
+            "Cl", "F", "N", "S", "F",
+            "Cl", "S", "S", "Cl", "Cl", "S",
+            "Br", "I", "S", "Cl", "O", "S",
+            "Cl", "C", "Cl", "O", "F", "O",
+            "O", "O", "O", "O", "Cl", "O",
+            "F", "Br", "I"
         };
 
         // Compound names
@@ -22,116 +47,263 @@ public class Main {
             "Sodium Chloride (NaCl)",
             "Water (H2O)",
             "Carbon Dioxide (CO2)",
-            "Iron Sulfide (FeS)",
-            "Potassium Chloride (KCl)",
+            "Iron(II) Sulfide (FeS)",
             "Magnesium Oxide (MgO)",
-            "Calcium Oxide (CaO)"
+            "Calcium Oxide (CaO)",
+            "Potassium Bromide (KBr)",
+            "Lithium Fluoride (LiF)",
+            "Hydrogen Chloride (HCl)",
+            "Methane (CH4)",
+            "Ammonia (NH3)",
+            "Sulfur Dioxide (SO2)",
+            "Silicon Dioxide (SiO2)",
+            "Sodium Fluoride (NaF)",
+            "Potassium Iodide (KI)",
+            "Lithium Bromide (LiBr)",
+            "Magnesium Chloride (MgCl2)",
+            "Calcium Sulfide (CaS)",
+            "Barium Oxide (BaO)",
+            "Aluminum Oxide (Al2O3)",
+            "Zinc Oxide (ZnO)",
+            "Copper(II) Oxide (CuO)",
+            "Silver Chloride (AgCl)",
+            "Lead(II) Oxide (PbO)",
+            "Tin(II) Chloride (SnCl2)",
+            "Tetraphosphorus Decoxide (P4O10)",
+            "Carbon Disulfide (CS2)",
+            "Nitrogen Dioxide (NO2)",
+            "Hydrogen Sulfide (H2S)",
+            "Iron(III) Oxide (Fe2O3)",
+
+            "Sodium Oxide (Na2O)",
+            "Sodium Bromide (NaBr)",
+            "Sodium Iodide (NaI)",
+            "Sodium Sulfide (Na2S)",
+            "Sodium Nitride (Na3N)",
+            "Sodium Hydride (NaH)",
+            "Potassium Chloride (KCl)",
+            "Potassium Fluoride (KF)",
+            "Potassium Oxide (K2O)",
+            "Potassium Sulfide (K2S)",
+            "Lithium Chloride (LiCl)",
+            "Lithium Oxide (Li2O)",
+            "Calcium Chloride (CaCl2)",
+            "Calcium Fluoride (CaF2)",
+            "Calcium Nitride (Ca3N2)",
+            "Magnesium Sulfide (MgS)",
+            "Magnesium Fluoride (MgF2)",
+            "Aluminum Chloride (AlCl3)",
+            "Aluminum Sulfide (Al2S3)",
+            "Zinc Sulfide (ZnS)",
+            "Zinc Chloride (ZnCl2)",
+            "Copper(II) Chloride (CuCl2)",
+            "Copper(II) Sulfide (CuS)",
+            "Silver Bromide (AgBr)",
+            "Silver Iodide (AgI)",
+            "Lead(II) Sulfide (PbS)",
+            "Lead(II) Chloride (PbCl2)",
+            "Tin(IV) Oxide (SnO2)",
+            "Tin(II) Sulfide (SnS)",
+            "Phosphorus Trichloride (PCl3)",
+            "Silicon Carbide (SiC)",
+            "Silicon Tetrachloride (SiCl4)",
+            "Boron Oxide (B2O3)",
+            "Boron Trifluoride (BF3)",
+            "Beryllium Oxide (BeO)",
+            "Chromium(III) Oxide (Cr2O3)",
+            "Manganese(IV) Oxide (MnO2)",
+            "Nickel(II) Oxide (NiO)",
+            "Cobalt(II) Oxide (CoO)",
+            "Gold(III) Chloride (AuCl3)",
+            "Mercury(II) Oxide (HgO)",
+            "Hydrogen Fluoride (HF)",
+            "Hydrogen Bromide (HBr)",
+            "Hydrogen Iodide (HI)"
+        };
+
+        // Supported element symbols
+        String[] supportedElements = {
+            "Na", "H", "C", "Fe", "Mg", "Ca",
+            "K", "Li", "N", "S", "Si", "Cl",
+            "O", "Br", "F", "I", "Ba", "Al",
+            "Zn", "Cu", "Ag", "Pb", "Sn", "P",
+            "B", "Be", "Cr", "Mn", "Ni", "Co",
+            "Au", "Hg"
         };
 
         boolean running = true;
 
-        // Program header
-        output.println("========================================");
-        output.println("       CHEMICAL COMPOUND SYSTEM");
-        output.println("========================================");
+        // Main header
+        output.println();
+        output.println("************************************************");
+        output.println("*                                              *");
+        output.println("*           CHEMISTRY LABORATORY SYSTEM        *");
+        output.println("*                                              *");
+        output.println("*             ELEMENT COMPOUND CHECKER         *");
+        output.println("*                                              *");
+        output.println("************************************************");
 
         while (running) {
 
-            String element1;
-            String element2;
-            boolean valid1;
-            boolean valid2;
+            output.println();
+            output.println("                  MAIN MENU");
+            output.println("------------------------------------------------");
+            output.println("  [1] Check Chemical Combination");
+            output.println("  [2] View Supported Elements");
+            output.println("  [3] Exit Program");
+            output.println("------------------------------------------------");
+            output.print("  Select an option: ");
 
-            // Enter first element and validate
-            do {
-                output.print("\nEnter first element: ");
-                element1 = input.next();
+            String menu = input.next();
 
-                element1 = element1.substring(0, 1).toUpperCase()
-                        + element1.substring(1).toLowerCase();
+            switch (menu) {
 
-                valid1 = false;
+                case "1": {
 
-                for (int i = 0; i < elements1.length; i++) {
-                    if (element1.equals(elements1[i]) ||
-                        element1.equals(elements2[i])) {
-                        valid1 = true;
-                        break;
+                    String element1;
+                    String element2;
+                    boolean valid1;
+                    boolean valid2;
+
+                    output.println();
+                    output.println("==============================================");
+                    output.println("           CHEMICAL COMBINATION CHECK");
+                    output.println("==============================================");
+
+                    // First element validation
+                    do {
+                        output.print("\n  Enter first element: ");
+                        element1 = input.next();
+
+                        element1 = element1.substring(0, 1).toUpperCase()
+                                + element1.substring(1).toLowerCase();
+
+                        valid1 = false;
+
+                        for (int i = 0; i < supportedElements.length; i++) {
+                            if (element1.equals(supportedElements[i])) {
+                                valid1 = true;
+                                break;
+                            }
+                        }
+
+                        if (!valid1) {
+                            output.println("  [!] Invalid element! Try again.");
+                        }
+
+                    } while (!valid1);
+
+                    output.println("  [OK] " + element1 + " accepted.");
+
+                    // Second element validation
+                    do {
+                        output.print("  Enter second element: ");
+                        element2 = input.next();
+
+                        element2 = element2.substring(0, 1).toUpperCase()
+                                + element2.substring(1).toLowerCase();
+
+                        valid2 = false;
+
+                        for (int i = 0; i < supportedElements.length; i++) {
+                            if (element2.equals(supportedElements[i])) {
+                                valid2 = true;
+                                break;
+                            }
+                        }
+
+                        if (!valid2) {
+                            output.println("  [!] Invalid element! Try again.");
+                        }
+
+                    } while (!valid2);
+
+                    output.println("  [OK] " + element2 + " accepted.");
+
+                    // Search for matching compound
+                    boolean reactionFound = false;
+
+                    output.println();
+                    output.println("----------------------------------------------");
+                    output.println("                ANALYSIS RESULT");
+                    output.println("----------------------------------------------");
+
+                    for (int i = 0; i < elements1.length; i++) {
+
+                        if ((element1.equals(elements1[i]) &&
+                             element2.equals(elements2[i])) ||
+                            (element1.equals(elements2[i]) &&
+                             element2.equals(elements1[i]))) {
+
+                            output.println("  First Element  : " + element1);
+                            output.println("  Second Element : " + element2);
+                            output.println("----------------------------------------------");
+                            output.println("  RESULT: " + compounds[i]);
+
+                            reactionFound = true;
+                            break;
+                        }
                     }
-                }
 
-                if (!valid1) {
-                    output.println("Invalid Element! Please try again.");
-                }
-
-            } while (!valid1);
-
-            output.println(element1 + " is a valid element!");
-
-            // Enter second element and validate
-            do {
-                output.print("Enter second element: ");
-                element2 = input.next();
-
-                element2 = element2.substring(0, 1).toUpperCase()
-                        + element2.substring(1).toLowerCase();
-
-                valid2 = false;
-
-                for (int i = 0; i < elements1.length; i++) {
-                    if (element2.equals(elements1[i]) ||
-                        element2.equals(elements2[i])) {
-                        valid2 = true;
-                        break;
+                    // No matching compound
+                    if (!reactionFound) {
+                        output.println("  First Element  : " + element1);
+                        output.println("  Second Element : " + element2);
+                        output.println("----------------------------------------------");
+                        output.println("  RESULT: NO REACTION");
+                        output.println("  No matching combination was found.");
                     }
-                }
 
-                if (!valid2) {
-                    output.println("Invalid Element! Please try again.");
-                }
+                    output.println("----------------------------------------------");
+                    output.println("  Analysis completed.");
 
-            } while (!valid2);
-
-            output.println(element2 + " is a valid element!");
-
-            // Find matching compound
-            boolean reactionFound = false;
-
-            for (int i = 0; i < elements1.length; i++) {
-
-                if ((element1.equals(elements1[i]) &&
-                     element2.equals(elements2[i])) ||
-                    (element1.equals(elements2[i]) &&
-                     element2.equals(elements1[i]))) {
-
-                    output.println("----------------------------------------");
-                    output.println("Resulting Compound: " + compounds[i]);
-
-                    reactionFound = true;
                     break;
                 }
-            }
 
-            // Display no reaction if no match exists
-            if (!reactionFound) {
-                output.println("----------------------------------------");
-                output.println("Result: NO REACTION");
-            }
+                case "2":
 
-            output.println("----------------------------------------");
+                    output.println();
+                    output.println("==============================================");
+                    output.println("             SUPPORTED ELEMENTS");
+                    output.println("==============================================");
 
-            // Ask to repeat
-            output.print("Check another combination? (Y/N): ");
-            String choice = input.next();
+                    for (int i = 0; i < supportedElements.length; i++) {
 
-            if (choice.equalsIgnoreCase("N")) {
-                running = false;
+                        output.printf("  %-5s", supportedElements[i]);
+
+                        if ((i + 1) % 4 == 0) {
+                            output.println();
+                        }
+                    }
+
+                    output.println();
+                    output.println("----------------------------------------------");
+                    output.println("  Total supported symbols: "
+                            + supportedElements.length);
+                    output.println("  Available combinations: "
+                            + compounds.length);
+
+                    break;
+
+                case "3":
+
+                    running = false;
+
+                    output.println();
+                    output.println("==============================================");
+                    output.println("       THANK YOU FOR USING THE SYSTEM!");
+                    output.println("              PROGRAM CLOSED");
+                    output.println("==============================================");
+
+                    break;
+
+                default:
+
+                    output.println();
+                    output.println("  [!] Invalid menu option.");
+                    output.println("  Please select 1, 2, or 3.");
             }
         }
-
-        output.println("\n========================================");
-        output.println("       CHEMICAL SYSTEM CLOSED");
-        output.println("========================================");
 
         input.close();
     }
